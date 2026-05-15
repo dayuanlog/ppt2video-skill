@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, height=1440">
+<title>handdrawn whiteboard - 02 contrast</title>
+<style>
+@font-face {
+  font-family: "WhiteboardHand";
+  src: url("https://mdpic.eryoude.com/2026/202605142223177.ttf") format("truetype");
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
+:root {
+  --paper: #fcfbf7;
+  --ink: #111111;
+  --soft: #434343;
+  --marker: #1d6ed1;
+  --marker-soft: #dce8fb;
+  --line: rgba(17, 17, 17, 0.9);
+  --hand: "WhiteboardHand", "Microsoft YaHei UI", sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  width: 1080px;
+  height: 1440px;
+  overflow: hidden;
+  background: #000;
+}
+
+.composition,
+.scene {
+  width: 1080px;
+  height: 1440px;
+  position: relative;
+  overflow: hidden;
+}
+
+.scene {
+  background:
+    radial-gradient(circle at 14% 10%, rgba(29, 110, 209, 0.05), transparent 18%),
+    radial-gradient(circle at 84% 86%, rgba(29, 110, 209, 0.05), transparent 16%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.014), rgba(0, 0, 0, 0.008)),
+    var(--paper);
+  color: var(--ink);
+  font-family: var(--hand);
+}
+
+.paper-noise {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(transparent 95%, rgba(0, 0, 0, 0.018) 95%),
+    linear-gradient(90deg, transparent 95%, rgba(0, 0, 0, 0.014) 95%);
+  background-size: 34px 34px, 34px 34px;
+  opacity: 0.34;
+}
+
+.rule {
+  position: absolute;
+  left: 80px;
+  right: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, rgba(17, 17, 17, 0.92) 8%, rgba(17, 17, 17, 0.82) 48%, rgba(17, 17, 17, 0.92) 92%, transparent);
+}
+
+.rule.top { top: 126px; transform: rotate(-0.35deg); }
+
+.content {
+  position: absolute;
+  inset: 0;
+  padding: 78px 80px 110px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 52px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 27px;
+  color: var(--soft);
+}
+
+.stack {
+  align-self: center;
+  display: grid;
+  gap: 34px;
+}
+
+.panel {
+  position: relative;
+  min-height: 310px;
+  padding: 30px 34px 26px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 5px solid var(--line);
+  border-radius: 18px 12px 16px 18px;
+  transform: rotate(-0.5deg);
+}
+
+.panel.blue::before {
+  border-color: rgba(29, 110, 209, 0.88);
+}
+
+.panel > * {
+  position: relative;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 72px;
+  padding: 10px 22px 12px;
+  border-radius: 999px;
+  border: 4px solid var(--ink);
+  background: rgba(255, 255, 255, 0.64);
+  font-size: 38px;
+  line-height: 1;
+}
+
+.blue .tag {
+  border-color: var(--marker);
+  color: var(--marker);
+  background: var(--marker-soft);
+}
+
+.big {
+  margin: 18px 0 0;
+  font-size: 112px;
+  line-height: 0.92;
+  font-weight: 400;
+}
+
+.big .accent {
+  color: var(--marker);
+}
+
+.note {
+  margin-top: 14px;
+  max-width: 700px;
+  font-size: 30px;
+  line-height: 1.24;
+  color: var(--soft);
+}
+
+.divider {
+  position: relative;
+  height: 24px;
+}
+
+.divider-line {
+  position: absolute;
+  left: 54px;
+  right: 54px;
+  top: 10px;
+  height: 4px;
+  background: linear-gradient(90deg, rgba(17, 17, 17, 0.86), rgba(17, 17, 17, 0.72));
+}
+</style>
+</head>
+<body>
+<div class="composition" data-composition-id="whiteboard-demo-02" data-width="1080" data-height="1440" data-start="0" data-duration="4">
+  <div class="scene">
+    <div class="paper-noise"></div>
+    <div class="rule top"></div>
+    <main class="content">
+      <div class="meta">
+        <span>白板手绘 / 核心反差</span>
+        <span>02 / 05</span>
+      </div>
+
+      <section class="stack">
+        <div class="panel">
+          <div class="tag">AI 会生成</div>
+          <h1 class="big">先做出来</h1>
+          <div class="note">这一段已经越来越强。</div>
+        </div>
+
+        <div class="divider">
+          <div class="divider-line"></div>
+        </div>
+
+        <div class="panel blue">
+          <div class="tag">真正麻烦</div>
+          <h1 class="big">是 <span class="accent">修改</span></h1>
+          <div class="note">反复调整，才最耗时间。</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+  (function() {
+    if (typeof gsap === "undefined") return;
+    var tl = gsap.timeline({ paused: true });
+    tl.fromTo(".meta", { opacity: 0, y: -18 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, 0.08)
+      .fromTo(".panel:first-of-type", { opacity: 0, y: 22, rotation: -1.5 }, { opacity: 1, y: 0, rotation: 0, duration: 0.28, ease: "power2.out" }, 0.28)
+      .fromTo(".divider-line", { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.22, ease: "power2.out" }, 0.6)
+      .fromTo(".panel.blue", { opacity: 0, y: 22, rotation: 1.5 }, { opacity: 1, y: 0, rotation: 0, duration: 0.3, ease: "power2.out" }, 0.82);
+
+    window.__timelines = window.__timelines || {};
+    window.__timelines["whiteboard-demo-02"] = tl;
+    window.addEventListener("hyperframes:play", function() { tl.play(); });
+    window.addEventListener("hyperframes:pause", function() { tl.pause(); });
+    window.addEventListener("hyperframes:reset", function() { tl.restart().pause(); });
+    setTimeout(function() { if (tl.paused()) tl.play(); }, 200);
+  })();
+  </script>
+</div>
+</body>
+</html>

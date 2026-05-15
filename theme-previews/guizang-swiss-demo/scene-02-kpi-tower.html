@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, height=1440">
+<title>guizang swiss - 02 kpi tower</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@200;300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
+* { box-sizing: border-box; }
+:root {
+  --paper: #fafaf8;
+  --ink: #0a0a0a;
+  --grey-1: #f0f0ee;
+  --grey-2: #d4d4d2;
+  --grey-3: #737373;
+  --accent: #002fa7;
+  --accent-on: #ffffff;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --sans: "Inter", "Noto Sans SC", "Microsoft YaHei UI", sans-serif;
+}
+html, body {
+  margin: 0;
+  width: 1080px;
+  height: 1440px;
+  overflow: hidden;
+  background: #000;
+}
+.composition {
+  width: 1080px;
+  height: 1440px;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+.scene {
+  width: 1080px;
+  height: 1440px;
+  position: relative;
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+}
+.content {
+  position: absolute;
+  inset: 0;
+  padding: 72px;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 32px;
+}
+.meta {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 17px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--grey-2);
+}
+.title {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 32px;
+  align-items: end;
+}
+.title h1 {
+  margin: 0;
+  font-size: 78px;
+  line-height: 1.06;
+  font-weight: 200;
+}
+.title p {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.45;
+  color: var(--grey-3);
+}
+.stage {
+  display: grid;
+  grid-template-columns: 1fr 310px;
+  gap: 34px;
+  align-items: end;
+}
+.kpi {
+  align-self: center;
+}
+.num {
+  font-size: 240px;
+  line-height: .84;
+  font-weight: 200;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.label {
+  margin-top: 20px;
+  font-family: var(--mono);
+  font-size: 22px;
+}
+.bars {
+  height: 680px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: end;
+  gap: 18px;
+  border-left: 1px solid var(--grey-2);
+  border-bottom: 1px solid var(--grey-2);
+  padding-left: 18px;
+  padding-bottom: 18px;
+}
+.bar {
+  background: var(--ink);
+  min-height: 70px;
+  position: relative;
+}
+.bar:nth-child(1) { height: 34%; }
+.bar:nth-child(2) { height: 54%; }
+.bar:nth-child(3) { height: 72%; }
+.bar:nth-child(4) { height: 96%; background: var(--accent); }
+.bar span {
+  position: absolute;
+  left: 0;
+  bottom: -46px;
+  font-family: var(--mono);
+  font-size: 15px;
+}
+</style>
+</head>
+<body>
+<div class="composition" data-composition-id="guizang-swiss-02" data-width="1080" data-height="1440" data-start="0" data-duration="5">
+  <div class="scene">
+    <main class="content">
+      <div class="meta"><span>KPI TOWER</span><span>02 / 05</span></div>
+      <section class="title">
+        <h1>数字页保持冷静</h1>
+        <p>瑞士风的数据页不靠阴影和渐变，靠尺寸差、轴线和单色强调建立秩序。</p>
+      </section>
+      <section class="stage">
+        <div class="kpi">
+          <div class="num">4.8x</div>
+          <div class="label">RENDER-SAFE IMPACT</div>
+        </div>
+        <div class="bars">
+          <div class="bar"><span>Q1</span></div>
+          <div class="bar"><span>Q2</span></div>
+          <div class="bar"><span>Q3</span></div>
+          <div class="bar"><span>Q4</span></div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+  (function() {
+    if (typeof gsap === "undefined") return;
+    var tl = gsap.timeline({ paused: true });
+    tl.fromTo(".meta", { opacity: 0, y: -18 }, { opacity: 1, y: 0, duration: 0.38, ease: "power2.out" }, 0.18)
+      .fromTo(".title h1", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.52, ease: "power2.out" }, 0.4)
+      .fromTo(".title p", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.42, ease: "power2.out" }, 0.55)
+      .fromTo(".num", { opacity: 0, y: 52 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.8)
+      .fromTo(".label", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.34, ease: "power2.out" }, 1.14)
+      .fromTo(".bar", { scaleY: 0, transformOrigin: "bottom" }, { scaleY: 1, duration: 0.52, stagger: 0.08, ease: "power2.out" }, 1.0);
+    window.__timelines = window.__timelines || {};
+    window.__timelines["guizang-swiss-02"] = tl;
+    window.addEventListener("hyperframes:play", function() { tl.play(); });
+    window.addEventListener("hyperframes:pause", function() { tl.pause(); });
+    window.addEventListener("hyperframes:reset", function() { tl.restart().pause(); });
+    setTimeout(function() { if (tl.paused()) tl.play(); }, 200);
+  })();
+  </script>
+</div>
+</body>
+</html>

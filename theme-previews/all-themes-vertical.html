@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>竖屏主题预览合集</title>
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #101010;
+  color: #f4f4f0;
+  font-family: "Microsoft YaHei UI", "Noto Sans SC", sans-serif;
+  padding: 42px;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: end;
+  margin-bottom: 34px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+h1 {
+  margin: 0;
+  font-size: 42px;
+  font-weight: 600;
+}
+
+.meta,
+.section-title,
+a span {
+  font-family: "Consolas", "IBM Plex Mono", ui-monospace, monospace;
+}
+
+.meta {
+  font-size: 13px;
+  color: rgba(244, 244, 240, 0.62);
+  text-align: right;
+}
+
+.section-title {
+  font-size: 14px;
+  color: rgba(244, 244, 240, 0.68);
+  margin: 38px 0 18px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: #181818;
+  padding: 14px;
+}
+
+.viewport {
+  width: 270px;
+  height: 360px;
+  overflow: hidden;
+  background: #000;
+  margin: 0 auto 14px;
+}
+
+iframe {
+  width: 1080px;
+  height: 1440px;
+  border: 0;
+  transform: scale(0.25);
+  transform-origin: 0 0;
+  pointer-events: none;
+  background: #000;
+}
+
+a {
+  display: block;
+  color: #f4f4f0;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+a span {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(244, 244, 240, 0.55);
+}
+</style>
+</head>
+<body>
+  <header>
+    <h1>竖屏主题预览合集</h1>
+    <div class="meta">1080 x 1440<br>独立 HTML scene</div>
+  </header>
+
+  <div class="section-title">A · 电子杂志 × 电子墨水</div>
+  <section class="grid">
+    <article class="card">
+      <div class="viewport"><iframe src="guizang-magazine-demo/scene-01-title-card.html"></iframe></div>
+      <a href="guizang-magazine-demo/scene-01-title-card.html">标题封面<span>scene-01-title-card.html</span></a>
+    </article>
+    <article class="card">
+      <div class="viewport"><iframe src="guizang-magazine-demo/scene-02-data-poster.html"></iframe></div>
+      <a href="guizang-magazine-demo/scene-02-data-poster.html">数据大字报<span>scene-02-data-poster.html</span></a>
+    </article>
+    <article class="card">
+      <div class="viewport"><iframe src="guizang-magazine-demo/scene-03-quote-image.html"></iframe></div>
+      <a href="guizang-magazine-demo/scene-03-quote-image.html">左文右图<span>scene-03-quote-image.html</span></a>
+    </article>
+    <article class="card">
+      <div class="viewport"><iframe src="guizang-magazine-demo/scene-04-image-grid.html"></iframe></div>
+      <a href="guizang-magazine-demo/scene-04-image-grid.html">图片网格<span>scene-04-image-grid.html</span></a>
+    </article>
+    <article class="card">
+      <div class="viewport"><iframe src="guizang-magazine-demo/scene-05-pipeline.html"></iframe></div>
+      <a href="guizang-magazine-demo/scene-05-pipeline.html">流程轴线<span>scene-05-pipeline.html</span></a>
+    </article>
+  </section>
+
+  <div class="section-title">B · 瑞士国际主义</div>
+  <section class="grid">
+    <article class="card">
+      <div class="viewport"><iframe src="guizang-swiss-demo/scene-01-cover.html"></iframe></div>
+      <a href="guizang-swiss-demo/scene-01-cover.html">瑞士封面<span>scene-01-cover.html</span></a>
+    </article>
+    <article class="card">
+      <div class="viewport"><iframe src="guizang-swiss-demo/scene-02-kpi-tower.html"></iframe></div>
+      <a href="guizang-swiss-demo/scene-02-kpi-tower.html">KPI 数据塔<span>scene-02-kpi-tower.html</span></a>
+    </article>
+    <article class="card">
+      <div class="viewport"><iframe src="guizang-swiss-demo/scene-03-duo-compare.html"></iframe></div>
+      <a href="guizang-swiss-demo/scene-03-duo-compare.html">双轨对照<span>scene-03-duo-compare.html</span></a>
+    </article>
+    <article class="card">
+      <div class="viewport"><iframe src="guizang-swiss-demo/scene-04-timeline.html"></iframe></div>
+      <a href="guizang-swiss-demo/scene-04-timeline.html">纵向时间线<span>scene-04-timeline.html</span></a>
+    </article>
+    <article class="card">
+      <div class="viewport"><iframe src="guizang-swiss-demo/scene-05-system-diagram.html"></iframe></div>
+      <a href="guizang-swiss-demo/scene-05-system-diagram.html">系统结构图<span>scene-05-system-diagram.html</span></a>
+    </article>
+  </section>
+
+  <div class="section-title">C · 白板手绘极简</div>
+  <section class="grid">
+    <article class="card">
+      <div class="viewport"><iframe src="handdrawn-whiteboard-demo/scene-01-title-card.html"></iframe></div>
+      <a href="handdrawn-whiteboard-demo/scene-01-title-card.html">开场证明<span>scene-01-title-card.html</span></a>
+    </article>
+    <article class="card">
+      <div class="viewport"><iframe src="handdrawn-whiteboard-demo/scene-02-contrast-card.html"></iframe></div>
+      <a href="handdrawn-whiteboard-demo/scene-02-contrast-card.html">核心反差<span>scene-02-contrast-card.html</span></a>
+    </article>
+    <article class="card">
+      <div class="viewport"><iframe src="handdrawn-whiteboard-demo/scene-03-proof-board.html"></iframe></div>
+      <a href="handdrawn-whiteboard-demo/scene-03-proof-board.html">证据板<span>scene-03-proof-board.html</span></a>
+    </article>
+    <article class="card">
+      <div class="viewport"><iframe src="handdrawn-whiteboard-demo/scene-04-process-path.html"></iframe></div>
+      <a href="handdrawn-whiteboard-demo/scene-04-process-path.html">流程路径<span>scene-04-process-path.html</span></a>
+    </article>
+    <article class="card">
+      <div class="viewport"><iframe src="handdrawn-whiteboard-demo/scene-05-closing-card.html"></iframe></div>
+      <a href="handdrawn-whiteboard-demo/scene-05-closing-card.html">收束结尾<span>scene-05-closing-card.html</span></a>
+    </article>
+  </section>
+
+  <div class="section-title">D · 发布会极简</div>
+  <section class="grid">
+    <article class="card">
+      <div class="viewport"><iframe src="launch-minimal-demo/scene-01-hero-statement.html"></iframe></div>
+      <a href="launch-minimal-demo/scene-01-hero-statement.html">大结论页<span>scene-01-hero-statement.html</span></a>
+    </article>
+    <article class="card">
+      <div class="viewport"><iframe src="launch-minimal-demo/scene-02-stacked-contrast.html"></iframe></div>
+      <a href="launch-minimal-demo/scene-02-stacked-contrast.html">上下反差<span>scene-02-stacked-contrast.html</span></a>
+    </article>
+    <article class="card">
+      <div class="viewport"><iframe src="launch-minimal-demo/scene-03-white-focus.html"></iframe></div>
+      <a href="launch-minimal-demo/scene-03-white-focus.html">白页聚焦<span>scene-03-white-focus.html</span></a>
+    </article>
+    <article class="card">
+      <div class="viewport"><iframe src="launch-minimal-demo/scene-04-minimal-sequence.html"></iframe></div>
+      <a href="launch-minimal-demo/scene-04-minimal-sequence.html">极简流程<span>scene-04-minimal-sequence.html</span></a>
+    </article>
+    <article class="card">
+      <div class="viewport"><iframe src="launch-minimal-demo/scene-05-closing-line.html"></iframe></div>
+      <a href="launch-minimal-demo/scene-05-closing-line.html">收束句<span>scene-05-closing-line.html</span></a>
+    </article>
+  </section>
+</body>
+</html>

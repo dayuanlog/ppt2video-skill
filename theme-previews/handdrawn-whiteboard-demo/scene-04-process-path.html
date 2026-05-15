@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, height=1440">
+<title>handdrawn whiteboard - 04 process path</title>
+<style>
+@font-face {
+  font-family: "WhiteboardHand";
+  src: url("https://mdpic.eryoude.com/2026/202605142223177.ttf") format("truetype");
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
+:root {
+  --paper: #fcfbf7;
+  --ink: #111111;
+  --soft: #434343;
+  --marker: #1d6ed1;
+  --marker-soft: #dce8fb;
+  --line: rgba(17, 17, 17, 0.9);
+  --hand: "WhiteboardHand", "Microsoft YaHei UI", sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  width: 1080px;
+  height: 1440px;
+  overflow: hidden;
+  background: #000;
+}
+
+.composition,
+.scene {
+  width: 1080px;
+  height: 1440px;
+  position: relative;
+  overflow: hidden;
+}
+
+.scene {
+  background:
+    radial-gradient(circle at 20% 16%, rgba(29, 110, 209, 0.06), transparent 18%),
+    radial-gradient(circle at 78% 88%, rgba(29, 110, 209, 0.05), transparent 18%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.014), rgba(0, 0, 0, 0.008)),
+    var(--paper);
+  color: var(--ink);
+  font-family: var(--hand);
+}
+
+.paper-noise {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(transparent 95%, rgba(0, 0, 0, 0.018) 95%),
+    linear-gradient(90deg, transparent 95%, rgba(0, 0, 0, 0.014) 95%);
+  background-size: 34px 34px, 34px 34px;
+  opacity: 0.34;
+}
+
+.rule {
+  position: absolute;
+  left: 80px;
+  right: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, rgba(17, 17, 17, 0.92) 8%, rgba(17, 17, 17, 0.82) 48%, rgba(17, 17, 17, 0.92) 92%, transparent);
+}
+
+.rule.top { top: 126px; transform: rotate(-0.35deg); }
+
+.content {
+  position: absolute;
+  inset: 0;
+  padding: 78px 80px 110px;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 30px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 27px;
+  color: var(--soft);
+}
+
+.title {
+  margin: 80px 0 0;
+  max-width: 720px;
+  font-size: 116px;
+  line-height: 0.96;
+  font-weight: 400;
+}
+
+.diagram {
+  align-self: center;
+  position: relative;
+  min-height: 520px;
+}
+
+.path {
+  position: absolute;
+  left: 96px;
+  right: 96px;
+  top: 162px;
+  height: 5px;
+  background: linear-gradient(90deg, rgba(17, 17, 17, 0.94), rgba(17, 17, 17, 0.78));
+}
+
+.step-row {
+  position: absolute;
+  left: 36px;
+  right: 36px;
+  top: 92px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.step {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+}
+
+.dot {
+  width: 138px;
+  height: 138px;
+  border: 6px solid var(--ink);
+  border-radius: 48% 52% 50% 50%;
+  background: rgba(255, 255, 255, 0.58);
+  display: grid;
+  place-items: center;
+  font-size: 42px;
+  transform: rotate(-4deg);
+}
+
+.step:nth-child(2) .dot,
+.step:nth-child(4) .dot {
+  transform: rotate(3deg);
+}
+
+.step:last-child .dot {
+  border-color: var(--marker);
+  color: var(--marker);
+  background: rgba(220, 232, 251, 0.72);
+}
+
+.label {
+  font-size: 28px;
+  color: var(--soft);
+}
+
+.callout {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%) rotate(-3deg);
+  min-width: 420px;
+  padding: 20px 28px 18px;
+  background: rgba(220, 232, 251, 0.76);
+  border: 4px solid rgba(29, 110, 209, 0.28);
+  text-align: center;
+  font-size: 34px;
+  line-height: 1.22;
+  color: var(--marker);
+}
+
+.callout::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  width: 108px;
+  height: 32px;
+  background: rgba(29, 110, 209, 0.14);
+  border: 2px solid rgba(29, 110, 209, 0.16);
+  transform: translateX(-50%) rotate(8deg);
+}
+</style>
+</head>
+<body>
+<div class="composition" data-composition-id="whiteboard-demo-04" data-width="1080" data-height="1440" data-start="0" data-duration="4.5">
+  <div class="scene">
+    <div class="paper-noise"></div>
+    <div class="rule top"></div>
+    <main class="content">
+      <div class="meta">
+        <span>白板手绘 / 流程路径</span>
+        <span>04 / 05</span>
+      </div>
+
+      <h1 class="title">真正费劲的<br>是后半程</h1>
+
+      <section class="diagram">
+        <div class="path"></div>
+        <div class="step-row">
+          <div class="step">
+            <div class="dot">生成</div>
+            <div class="label">先出来</div>
+          </div>
+          <div class="step">
+            <div class="dot">挑错</div>
+            <div class="label">找问题</div>
+          </div>
+          <div class="step">
+            <div class="dot">局改</div>
+            <div class="label">只改局部</div>
+          </div>
+          <div class="step">
+            <div class="dot">发布</div>
+            <div class="label">最后上线</div>
+          </div>
+        </div>
+
+        <div class="callout">发布前的修改，才最耗力。</div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+  (function() {
+    if (typeof gsap === "undefined") return;
+    var tl = gsap.timeline({ paused: true });
+    tl.fromTo(".meta", { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, 0.08)
+      .fromTo(".title", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.42, ease: "power3.out" }, 0.28)
+      .fromTo(".path", { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.34, ease: "power2.out" }, 0.66)
+      .fromTo(".step", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.24, stagger: 0.08, ease: "power2.out" }, 0.82)
+      .fromTo(".callout", { opacity: 0, rotation: 6, y: 18 }, { opacity: 1, rotation: -3, y: 0, duration: 0.28, ease: "power2.out" }, 1.12);
+
+    window.__timelines = window.__timelines || {};
+    window.__timelines["whiteboard-demo-04"] = tl;
+    window.addEventListener("hyperframes:play", function() { tl.play(); });
+    window.addEventListener("hyperframes:pause", function() { tl.pause(); });
+    window.addEventListener("hyperframes:reset", function() { tl.restart().pause(); });
+    setTimeout(function() { if (tl.paused()) tl.play(); }, 200);
+  })();
+  </script>
+</div>
+</body>
+</html>

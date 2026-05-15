@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, height=1440">
+<title>guizang swiss - 05 system diagram</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@200;300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
+* { box-sizing: border-box; }
+:root {
+  --paper: #fafaf8;
+  --ink: #0a0a0a;
+  --grey-1: #f0f0ee;
+  --grey-2: #d4d4d2;
+  --grey-3: #737373;
+  --accent: #002fa7;
+  --accent-on: #ffffff;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --sans: "Inter", "Noto Sans SC", "Microsoft YaHei UI", sans-serif;
+}
+html, body {
+  margin: 0;
+  width: 1080px;
+  height: 1440px;
+  overflow: hidden;
+  background: #000;
+}
+.composition {
+  width: 1080px;
+  height: 1440px;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+.scene {
+  width: 1080px;
+  height: 1440px;
+  position: relative;
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+}
+.content {
+  position: absolute;
+  inset: 0;
+  padding: 72px;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 30px;
+}
+.meta {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 17px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--grey-2);
+}
+.title-row {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 36px;
+  align-items: end;
+}
+.title-row h1 {
+  margin: 0;
+  font-size: 76px;
+  line-height: 1.06;
+  font-weight: 200;
+}
+.title-row p {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.45;
+  color: var(--grey-3);
+}
+.diagram {
+  position: relative;
+  align-self: center;
+  height: 700px;
+  border: 1px solid var(--ink);
+  display: grid;
+  place-items: center;
+}
+.core {
+  width: 270px;
+  height: 270px;
+  background: var(--accent);
+  color: var(--accent-on);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-size: 34px;
+  line-height: 1.16;
+  font-weight: 500;
+}
+.ring {
+  position: absolute;
+  border: 1px solid var(--grey-2);
+}
+.ring.one {
+  width: 470px;
+  height: 470px;
+}
+.ring.two {
+  width: 650px;
+  height: 650px;
+}
+.module {
+  position: absolute;
+  width: 210px;
+  min-height: 110px;
+  background: var(--paper);
+  border-top: 4px solid var(--ink);
+  padding: 16px 14px;
+  font-size: 22px;
+  line-height: 1.22;
+}
+.module small {
+  display: block;
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--grey-3);
+  margin-bottom: 10px;
+}
+.m1 { top: 48px; left: 62px; }
+.m2 { top: 48px; right: 62px; }
+.m3 { bottom: 48px; left: 62px; }
+.m4 { bottom: 48px; right: 62px; }
+.footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.foot-card {
+  background: var(--grey-1);
+  padding: 20px;
+  min-height: 105px;
+  font-size: 21px;
+  line-height: 1.32;
+}
+.foot-card b {
+  display: block;
+  font-family: var(--mono);
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+<div class="composition" data-composition-id="guizang-swiss-05" data-width="1080" data-height="1440" data-start="0" data-duration="5">
+  <div class="scene">
+    <main class="content">
+      <div class="meta"><span>SYSTEM DIAGRAM</span><span>05 / 05</span></div>
+      <section class="title-row">
+        <h1>系统图保留几何关系</h1>
+        <p>用线框、层级、模块和中心块表达结构，不用复杂 SVG 滤镜或循环描边。</p>
+      </section>
+      <section class="diagram">
+        <div class="ring one"></div>
+        <div class="ring two"></div>
+        <div class="core">视频<br>生成系统</div>
+        <div class="module m1"><small>INPUT</small>脚本与素材</div>
+        <div class="module m2"><small>PLAN</small>页面设计</div>
+        <div class="module m3"><small>SCENE</small>HTML 骨架</div>
+        <div class="module m4"><small>RENDER</small>稳定导出</div>
+      </section>
+      <section class="footer">
+        <div class="foot-card"><b>01</b>直角模块</div>
+        <div class="foot-card"><b>02</b>单色强调</div>
+        <div class="foot-card"><b>03</b>固定画布</div>
+      </section>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+  (function() {
+    if (typeof gsap === "undefined") return;
+    var tl = gsap.timeline({ paused: true });
+    tl.fromTo(".meta", { opacity: 0, y: -18 }, { opacity: 1, y: 0, duration: 0.38, ease: "power2.out" }, 0.18)
+      .fromTo(".title-row h1", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.52, ease: "power2.out" }, 0.4)
+      .fromTo(".title-row p", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.42, ease: "power2.out" }, 0.55)
+      .fromTo(".diagram", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.48, ease: "power2.out" }, 0.8)
+      .fromTo(".ring", { opacity: 0, scale: .94 }, { opacity: 1, scale: 1, duration: 0.5, stagger: 0.08, ease: "power2.out" }, 1.02)
+      .fromTo(".core", { opacity: 0, scale: .92 }, { opacity: 1, scale: 1, duration: 0.44, ease: "power2.out" }, 1.16)
+      .fromTo(".module", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.36, stagger: 0.07, ease: "power2.out" }, 1.28)
+      .fromTo(".foot-card", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.32, stagger: 0.06, ease: "power2.out" }, 1.68);
+    window.__timelines = window.__timelines || {};
+    window.__timelines["guizang-swiss-05"] = tl;
+    window.addEventListener("hyperframes:play", function() { tl.play(); });
+    window.addEventListener("hyperframes:pause", function() { tl.pause(); });
+    window.addEventListener("hyperframes:reset", function() { tl.restart().pause(); });
+    setTimeout(function() { if (tl.paused()) tl.play(); }, 200);
+  })();
+  </script>
+</div>
+</body>
+</html>

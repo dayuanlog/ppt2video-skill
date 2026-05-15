@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, height=1440">
+<title>handdrawn whiteboard - 05 closing card</title>
+<style>
+@font-face {
+  font-family: "WhiteboardHand";
+  src: url("https://mdpic.eryoude.com/2026/202605142223177.ttf") format("truetype");
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
+:root {
+  --paper: #fcfbf7;
+  --ink: #111111;
+  --soft: #434343;
+  --marker: #1d6ed1;
+  --marker-soft: #dce8fb;
+  --line: rgba(17, 17, 17, 0.9);
+  --hand: "WhiteboardHand", "Microsoft YaHei UI", sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  width: 1080px;
+  height: 1440px;
+  overflow: hidden;
+  background: #000;
+}
+
+.composition,
+.scene {
+  width: 1080px;
+  height: 1440px;
+  position: relative;
+  overflow: hidden;
+}
+
+.scene {
+  background:
+    radial-gradient(circle at 16% 12%, rgba(29, 110, 209, 0.06), transparent 18%),
+    radial-gradient(circle at 82% 84%, rgba(29, 110, 209, 0.05), transparent 18%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.014), rgba(0, 0, 0, 0.008)),
+    var(--paper);
+  color: var(--ink);
+  font-family: var(--hand);
+}
+
+.paper-noise {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(transparent 95%, rgba(0, 0, 0, 0.018) 95%),
+    linear-gradient(90deg, transparent 95%, rgba(0, 0, 0, 0.014) 95%);
+  background-size: 34px 34px, 34px 34px;
+  opacity: 0.34;
+}
+
+.rule {
+  position: absolute;
+  left: 80px;
+  right: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, rgba(17, 17, 17, 0.92) 8%, rgba(17, 17, 17, 0.82) 48%, rgba(17, 17, 17, 0.92) 92%, transparent);
+}
+
+.rule.top { top: 126px; transform: rotate(-0.35deg); }
+
+.content {
+  position: absolute;
+  inset: 0;
+  padding: 78px 80px 110px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 52px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 27px;
+  color: var(--soft);
+}
+
+.hero {
+  align-self: center;
+  display: grid;
+  gap: 30px;
+}
+
+.kicker {
+  width: fit-content;
+  min-height: 74px;
+  padding: 12px 28px 14px;
+  border-radius: 999px;
+  background: var(--marker-soft);
+  color: var(--marker);
+  box-shadow: inset 0 0 0 2px rgba(29, 110, 209, 0.16);
+  font-size: 34px;
+}
+
+.title {
+  margin: 0;
+  max-width: 760px;
+  font-size: 128px;
+  line-height: 0.96;
+  font-weight: 400;
+}
+
+.title .blue {
+  color: var(--marker);
+}
+
+.contact {
+  position: relative;
+  width: fit-content;
+  padding: 22px 28px 20px;
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.contact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 5px solid var(--line);
+  border-radius: 18px 12px 17px 16px;
+  transform: rotate(-0.45deg);
+}
+
+.contact span {
+  position: relative;
+  display: block;
+}
+
+.contact .label {
+  font-size: 32px;
+  color: var(--soft);
+}
+
+.contact .url {
+  margin-top: 10px;
+  font-size: 62px;
+  color: var(--marker);
+}
+</style>
+</head>
+<body>
+<div class="composition" data-composition-id="whiteboard-demo-05" data-width="1080" data-height="1440" data-start="0" data-duration="4">
+  <div class="scene">
+    <div class="paper-noise"></div>
+    <div class="rule top"></div>
+    <main class="content">
+      <div class="meta">
+        <span>白板手绘 / 收束结尾</span>
+        <span>05 / 05</span>
+      </div>
+
+      <section class="hero">
+        <div class="kicker">结尾 / CTA</div>
+        <h1 class="title">难点不是<br>做出来<br>而是 <span class="blue">改得动</span></h1>
+        <div class="contact">
+          <span class="label">contact</span>
+          <span class="url">your-site.com</span>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+  (function() {
+    if (typeof gsap === "undefined") return;
+    var tl = gsap.timeline({ paused: true });
+    tl.fromTo(".meta", { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.22, ease: "power2.out" }, 0.08)
+      .fromTo(".kicker", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.22, ease: "power2.out" }, 0.24)
+      .fromTo(".title", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.44, ease: "power3.out" }, 0.42)
+      .fromTo(".contact", { opacity: 0, y: 18, rotation: -2 }, { opacity: 1, y: 0, rotation: 0, duration: 0.26, ease: "power2.out" }, 0.84);
+
+    window.__timelines = window.__timelines || {};
+    window.__timelines["whiteboard-demo-05"] = tl;
+    window.addEventListener("hyperframes:play", function() { tl.play(); });
+    window.addEventListener("hyperframes:pause", function() { tl.pause(); });
+    window.addEventListener("hyperframes:reset", function() { tl.restart().pause(); });
+    setTimeout(function() { if (tl.paused()) tl.play(); }, 200);
+  })();
+  </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, height=1440">
+<title>guizang magazine - 02 data poster</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;700;900&display=swap');
+* { box-sizing: border-box; }
+:root {
+  --ink: #0a1f3d;
+  --paper: #f1f3f5;
+  --paper-2: #e4e8ec;
+  --accent: #c85d3a;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --serif: "Noto Serif SC", serif;
+  --sans: "Noto Sans SC", sans-serif;
+}
+html, body {
+  margin: 0;
+  width: 1080px;
+  height: 1440px;
+  overflow: hidden;
+  background: #000;
+}
+.composition {
+  width: 1080px;
+  height: 1440px;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+.scene {
+  width: 1080px;
+  height: 1440px;
+  position: relative;
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+}
+.grid-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(10, 31, 61, .08) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(10, 31, 61, .08) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+.content {
+  position: absolute;
+  inset: 0;
+  padding: 76px 72px 82px;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 34px;
+}
+.chrome {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(10, 31, 61, .24);
+  padding-bottom: 18px;
+  font-family: var(--mono);
+  font-size: 17px;
+  color: rgba(10, 31, 61, .72);
+}
+.title {
+  font-family: var(--serif);
+  font-size: 70px;
+  line-height: 1.14;
+  font-weight: 900;
+  margin: 0;
+  max-width: 760px;
+}
+.hero-stat {
+  align-self: center;
+  display: grid;
+  grid-template-columns: 1fr 270px;
+  gap: 42px;
+  align-items: end;
+}
+.number {
+  font-family: var(--serif);
+  font-size: 250px;
+  line-height: .82;
+  font-weight: 900;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.unit {
+  font-family: var(--mono);
+  font-size: 24px;
+  color: var(--accent);
+  margin-top: 18px;
+}
+.note {
+  border-left: 4px solid var(--accent);
+  padding-left: 24px;
+  font-size: 28px;
+  line-height: 1.55;
+  color: rgba(10, 31, 61, .82);
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.card {
+  border-top: 2px solid var(--ink);
+  background: rgba(10, 31, 61, .045);
+  padding: 24px 22px 28px;
+  min-height: 176px;
+}
+.card b {
+  display: block;
+  font-family: var(--serif);
+  font-size: 48px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 16px;
+}
+.card span {
+  display: block;
+  font-size: 20px;
+  line-height: 1.45;
+}
+</style>
+</head>
+<body>
+<div class="composition" data-composition-id="guizang-magazine-02" data-width="1080" data-height="1440" data-start="0" data-duration="5">
+  <div class="scene">
+    <div class="grid-bg"></div>
+    <main class="content">
+      <div class="chrome"><span>DATA POSTER</span><span>02 / 05</span></div>
+      <h1 class="title">用一个大数字先把判断钉住</h1>
+      <section class="hero-stat">
+        <div>
+          <div class="number">73%</div>
+          <div class="unit">关键指标变化</div>
+        </div>
+        <p class="note">数据页不做复杂图表堆叠，先给观众一个清晰记忆点，再用三块短证据补充。</p>
+      </section>
+      <section class="cards">
+        <div class="card"><b>3.2x</b><span>处理速度提升</span></div>
+        <div class="card"><b>18</b><span>分钟完成一轮修改</span></div>
+        <div class="card"><b>0</b><span>无需网页翻页交互</span></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+  (function() {
+    if (typeof gsap === "undefined") return;
+    var tl = gsap.timeline({ paused: true });
+    tl.fromTo(".chrome", { opacity: 0, y: -18 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.18)
+      .fromTo(".title", { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 0.62, ease: "power3.out" }, 0.38)
+      .fromTo(".number", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.78, ease: "expo.out" }, 0.72)
+      .fromTo(".unit", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.38, ease: "power2.out" }, 1.12)
+      .fromTo(".note", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.52, ease: "power2.out" }, 1.0)
+      .fromTo(".card", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.42, stagger: 0.09, ease: "power2.out" }, 1.32);
+    window.__timelines = window.__timelines || {};
+    window.__timelines["guizang-magazine-02"] = tl;
+    window.addEventListener("hyperframes:play", function() { tl.play(); });
+    window.addEventListener("hyperframes:pause", function() { tl.pause(); });
+    window.addEventListener("hyperframes:reset", function() { tl.restart().pause(); });
+    setTimeout(function() { if (tl.paused()) tl.play(); }, 200);
+  })();
+  </script>
+</div>
+</body>
+</html>

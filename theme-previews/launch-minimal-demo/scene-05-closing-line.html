@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, height=1440">
+<title>launch minimal - 05 closing line</title>
+<style>
+* { box-sizing: border-box; }
+
+:root {
+  --bg: #050505;
+  --fg: #f5f5f2;
+  --muted: rgba(245, 245, 242, 0.62);
+  --accent: #6aa7ff;
+  --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  width: 1080px;
+  height: 1440px;
+  overflow: hidden;
+  background: #000;
+}
+
+.composition,
+.scene {
+  width: 1080px;
+  height: 1440px;
+  position: relative;
+  overflow: hidden;
+}
+
+.scene {
+  background:
+    radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.05), transparent 24%),
+    var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+}
+
+.content {
+  position: absolute;
+  inset: 0;
+  padding: 88px 92px 120px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 44px;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+  font-size: 28px;
+}
+
+.hero {
+  align-self: center;
+  display: grid;
+  gap: 28px;
+}
+
+.title {
+  margin: 0;
+  max-width: 840px;
+  font-size: 140px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.contact {
+  width: fit-content;
+  color: var(--muted);
+  font-size: 40px;
+}
+
+.url {
+  margin-top: 8px;
+  color: var(--fg);
+  font-size: 64px;
+  font-weight: 500;
+}
+</style>
+</head>
+<body>
+<div class="composition" data-composition-id="launch-minimal-05" data-width="1080" data-height="1440" data-start="0" data-duration="4">
+  <div class="scene">
+    <main class="content">
+      <div class="meta">
+        <span>发布会极简 / Closing</span>
+        <span>05 / 05</span>
+      </div>
+
+      <section class="hero">
+        <h1 class="title">不要把修改权<br>交给<span class="accent">黑箱</span></h1>
+        <div class="contact">
+          <div>contact</div>
+          <div class="url">your-site.com</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+  (function() {
+    if (typeof gsap === "undefined") return;
+    var tl = gsap.timeline({ paused: true });
+    tl.fromTo(".meta", { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.22, ease: "power2.out" }, 0.08)
+      .fromTo(".title", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.46, ease: "power3.out" }, 0.32)
+      .fromTo(".contact", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.22, ease: "power2.out" }, 0.78);
+
+    window.__timelines = window.__timelines || {};
+    window.__timelines["launch-minimal-05"] = tl;
+    window.addEventListener("hyperframes:play", function() { tl.play(); });
+    window.addEventListener("hyperframes:pause", function() { tl.pause(); });
+    window.addEventListener("hyperframes:reset", function() { tl.restart().pause(); });
+    setTimeout(function() { if (tl.paused()) tl.play(); }, 200);
+  })();
+  </script>
+</div>
+</body>
+</html>

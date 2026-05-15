@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, height=1440">
+<title>handdrawn whiteboard - 01 title card</title>
+<style>
+@font-face {
+  font-family: "WhiteboardHand";
+  src: url("https://mdpic.eryoude.com/2026/202605142223177.ttf") format("truetype");
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
+:root {
+  --paper: #fcfbf7;
+  --ink: #111111;
+  --soft: #434343;
+  --marker: #1d6ed1;
+  --marker-soft: #dce8fb;
+  --line: rgba(17, 17, 17, 0.9);
+  --shadow: rgba(17, 17, 17, 0.08);
+  --hand: "WhiteboardHand", "Microsoft YaHei UI", sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  width: 1080px;
+  height: 1440px;
+  overflow: hidden;
+  background: #000;
+}
+
+.composition,
+.scene {
+  width: 1080px;
+  height: 1440px;
+  position: relative;
+  overflow: hidden;
+}
+
+.scene {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(29, 110, 209, 0.06), transparent 20%),
+    radial-gradient(circle at 84% 84%, rgba(29, 110, 209, 0.05), transparent 18%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.015), rgba(0, 0, 0, 0.008)),
+    var(--paper);
+  color: var(--ink);
+  font-family: var(--hand);
+}
+
+.paper-noise {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(transparent 95%, rgba(0, 0, 0, 0.018) 95%),
+    linear-gradient(90deg, transparent 95%, rgba(0, 0, 0, 0.014) 95%);
+  background-size: 34px 34px, 34px 34px;
+  opacity: 0.34;
+  pointer-events: none;
+}
+
+.rule {
+  position: absolute;
+  left: 80px;
+  right: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, rgba(17, 17, 17, 0.92) 8%, rgba(17, 17, 17, 0.82) 48%, rgba(17, 17, 17, 0.92) 92%, transparent);
+}
+
+.rule.top { top: 126px; transform: rotate(-0.35deg); }
+
+.content {
+  position: absolute;
+  inset: 0;
+  padding: 78px 80px 110px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 48px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 27px;
+  color: var(--soft);
+}
+
+.hero {
+  align-self: center;
+  display: grid;
+  gap: 38px;
+}
+
+.chips {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 68px;
+  padding: 10px 24px 12px;
+  border-radius: 999px;
+  background: var(--marker-soft);
+  color: var(--marker);
+  box-shadow: inset 0 0 0 2px rgba(29, 110, 209, 0.16);
+  font-size: 34px;
+  line-height: 1;
+}
+
+.title {
+  margin: 0;
+  max-width: 760px;
+  font-size: 128px;
+  line-height: 0.96;
+  font-weight: 400;
+}
+
+.blue {
+  color: var(--marker);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  min-height: 214px;
+  padding: 22px 20px 18px;
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: 0 10px 28px var(--shadow);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 5px solid var(--line);
+  border-radius: 16px 12px 18px 14px;
+  transform: rotate(-0.55deg);
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 3px solid rgba(17, 17, 17, 0.34);
+  border-radius: 15px 18px 12px 17px;
+  transform: rotate(0.45deg);
+}
+
+.tape {
+  position: absolute;
+  top: -10px;
+  width: 126px;
+  height: 34px;
+  background: rgba(29, 110, 209, 0.12);
+  border: 2px solid rgba(29, 110, 209, 0.16);
+}
+
+.tape.one { left: 20px; transform: rotate(-7deg); }
+.tape.two { right: 24px; transform: rotate(7deg); }
+.tape.three { left: 30px; transform: rotate(-5deg); }
+
+.label,
+.note {
+  position: relative;
+}
+
+.label {
+  font-size: 48px;
+  line-height: 1;
+}
+
+.note {
+  margin-top: 14px;
+  max-width: 220px;
+  font-size: 28px;
+  line-height: 1.24;
+  color: var(--soft);
+}
+</style>
+</head>
+<body>
+<div class="composition" data-composition-id="whiteboard-demo-01" data-width="1080" data-height="1440" data-start="0" data-duration="4">
+  <div class="scene">
+    <div class="paper-noise"></div>
+    <div class="rule top"></div>
+    <main class="content">
+      <div class="meta">
+        <span>白板手绘 / 开场证明</span>
+        <span>01 / 05</span>
+      </div>
+
+      <section class="hero">
+        <div class="chips">
+          <span class="chip">AI PPT</span>
+          <span class="chip">AI 声音</span>
+          <span class="chip">真实案例</span>
+        </div>
+
+        <h1 class="title">这条视频<br>由 <span class="blue">AI</span> 完成</h1>
+
+        <div class="grid">
+          <div class="card">
+            <div class="tape one"></div>
+            <div class="label">PPT</div>
+            <div class="note">画面结构由 AI 先搭出来。</div>
+          </div>
+          <div class="card">
+            <div class="tape two"></div>
+            <div class="label">VOICE</div>
+            <div class="note">克隆声音直接进成片。</div>
+          </div>
+          <div class="card">
+            <div class="tape three"></div>
+            <div class="label">VIDEO</div>
+            <div class="note">你看到的就是完整结果。</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+  (function() {
+    if (typeof gsap === "undefined") return;
+    var tl = gsap.timeline({ paused: true });
+    tl.fromTo(".meta", { opacity: 0, y: -18 }, { opacity: 1, y: 0, duration: 0.26, ease: "power2.out" }, 0.08)
+      .fromTo(".chip", { opacity: 0, y: 14, rotation: -4 }, { opacity: 1, y: 0, rotation: 0, duration: 0.24, stagger: 0.05, ease: "power2.out" }, 0.22)
+      .fromTo(".title", { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 0.46, ease: "power3.out" }, 0.44)
+      .fromTo(".card", { opacity: 0, y: 22, rotation: -2 }, { opacity: 1, y: 0, rotation: 0, duration: 0.26, stagger: 0.08, ease: "power2.out" }, 0.78);
+
+    window.__timelines = window.__timelines || {};
+    window.__timelines["whiteboard-demo-01"] = tl;
+    window.addEventListener("hyperframes:play", function() { tl.play(); });
+    window.addEventListener("hyperframes:pause", function() { tl.pause(); });
+    window.addEventListener("hyperframes:reset", function() { tl.restart().pause(); });
+    setTimeout(function() { if (tl.paused()) tl.play(); }, 200);
+  })();
+  </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, height=1440">
+<title>guizang swiss - 03 duo compare</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@200;300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
+* { box-sizing: border-box; }
+:root {
+  --paper: #fafaf8;
+  --ink: #0a0a0a;
+  --grey-1: #f0f0ee;
+  --grey-2: #d4d4d2;
+  --grey-3: #737373;
+  --accent: #002fa7;
+  --accent-on: #ffffff;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --sans: "Inter", "Noto Sans SC", "Microsoft YaHei UI", sans-serif;
+}
+html, body {
+  margin: 0;
+  width: 1080px;
+  height: 1440px;
+  overflow: hidden;
+  background: #000;
+}
+.composition {
+  width: 1080px;
+  height: 1440px;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+.scene {
+  width: 1080px;
+  height: 1440px;
+  position: relative;
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+}
+.content {
+  position: absolute;
+  inset: 0;
+  padding: 72px;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 34px;
+}
+.meta {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 17px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--grey-2);
+}
+.title {
+  margin: 0;
+  font-size: 76px;
+  line-height: 1.06;
+  font-weight: 200;
+  max-width: 760px;
+}
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  min-height: 780px;
+}
+.side {
+  padding: 46px 36px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 28px;
+}
+.side + .side {
+  border-left: 1px solid var(--ink);
+}
+.side.right {
+  background: var(--accent);
+  color: var(--accent-on);
+}
+.tag {
+  font-family: var(--mono);
+  font-size: 17px;
+}
+.side h2 {
+  margin: 0;
+  font-size: 68px;
+  line-height: 1.02;
+  font-weight: 200;
+  align-self: center;
+}
+.list {
+  display: grid;
+  gap: 16px;
+}
+.item {
+  border-top: 1px solid currentColor;
+  padding-top: 14px;
+  font-size: 24px;
+  line-height: 1.34;
+}
+</style>
+</head>
+<body>
+<div class="composition" data-composition-id="guizang-swiss-03" data-width="1080" data-height="1440" data-start="0" data-duration="5">
+  <div class="scene">
+    <main class="content">
+      <div class="meta"><span>DUO COMPARE</span><span>03 / 05</span></div>
+      <h1 class="title">对比页要像两条轨道</h1>
+      <section class="compare">
+        <div class="side left">
+          <div class="tag">WEB DECK</div>
+          <h2>页面展示</h2>
+          <div class="list">
+            <div class="item">横向翻页</div>
+            <div class="item">WebGL 背景</div>
+            <div class="item">交互触发动画</div>
+          </div>
+        </div>
+        <div class="side right">
+          <div class="tag">VIDEO SCENE</div>
+          <h2>稳定导出</h2>
+          <div class="list">
+            <div class="item">独立 HTML</div>
+            <div class="item">固定画布</div>
+            <div class="item">单 timeline 可寻轨</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+  (function() {
+    if (typeof gsap === "undefined") return;
+    var tl = gsap.timeline({ paused: true });
+    tl.fromTo(".meta", { opacity: 0, y: -18 }, { opacity: 1, y: 0, duration: 0.38, ease: "power2.out" }, 0.18)
+      .fromTo(".title", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.52, ease: "power2.out" }, 0.4)
+      .fromTo(".compare", { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.54, ease: "power2.out" }, 0.72)
+      .fromTo(".side.left h2", { opacity: 0, x: -34 }, { opacity: 1, x: 0, duration: 0.48, ease: "power2.out" }, 1.0)
+      .fromTo(".side.right h2", { opacity: 0, x: 34 }, { opacity: 1, x: 0, duration: 0.48, ease: "power2.out" }, 1.08)
+      .fromTo(".item", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.32, stagger: 0.07, ease: "power2.out" }, 1.28);
+    window.__timelines = window.__timelines || {};
+    window.__timelines["guizang-swiss-03"] = tl;
+    window.addEventListener("hyperframes:play", function() { tl.play(); });
+    window.addEventListener("hyperframes:pause", function() { tl.pause(); });
+    window.addEventListener("hyperframes:reset", function() { tl.restart().pause(); });
+    setTimeout(function() { if (tl.paused()) tl.play(); }, 200);
+  })();
+  </script>
+</div>
+</body>
+</html>

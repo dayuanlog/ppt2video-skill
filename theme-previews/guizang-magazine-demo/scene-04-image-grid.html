@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, height=1440">
+<title>guizang magazine - 04 image grid</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;700;900&display=swap');
+* { box-sizing: border-box; }
+:root {
+  --ink: #0a1f3d;
+  --paper: #f1f3f5;
+  --paper-2: #e4e8ec;
+  --accent: #c85d3a;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --serif: "Noto Serif SC", serif;
+  --sans: "Noto Sans SC", sans-serif;
+}
+html, body {
+  margin: 0;
+  width: 1080px;
+  height: 1440px;
+  overflow: hidden;
+  background: #000;
+}
+.composition {
+  width: 1080px;
+  height: 1440px;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+.scene {
+  width: 1080px;
+  height: 1440px;
+  position: relative;
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+}
+.content {
+  position: absolute;
+  inset: 0;
+  padding: 72px;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 28px;
+}
+.chrome {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 17px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(10, 31, 61, .22);
+}
+.title-row {
+  display: grid;
+  grid-template-columns: 1.08fr .92fr;
+  gap: 32px;
+  align-items: end;
+}
+.title {
+  font-family: var(--serif);
+  font-size: 70px;
+  line-height: 1.12;
+  font-weight: 900;
+  margin: 0;
+}
+.summary {
+  font-size: 24px;
+  line-height: 1.5;
+  color: rgba(10, 31, 61, .72);
+  margin: 0;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  align-content: center;
+}
+.tile {
+  height: 360px;
+  border: 1px solid rgba(10, 31, 61, .22);
+  background:
+    linear-gradient(145deg, rgba(10, 31, 61, .16), transparent 45%),
+    var(--paper-2);
+  position: relative;
+  overflow: hidden;
+}
+.tile.dark {
+  background:
+    linear-gradient(145deg, rgba(200, 93, 58, .28), transparent 46%),
+    var(--ink);
+}
+.tile span {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 20px;
+  padding-top: 14px;
+  border-top: 1px solid currentColor;
+  font-family: var(--mono);
+  font-size: 15px;
+  color: rgba(10, 31, 61, .76);
+}
+.tile.dark span {
+  color: rgba(241, 243, 245, .8);
+}
+.footer {
+  border-top: 1px solid rgba(10, 31, 61, .22);
+  padding-top: 22px;
+  font-size: 20px;
+  color: rgba(10, 31, 61, .68);
+}
+</style>
+</head>
+<body>
+<div class="composition" data-composition-id="guizang-magazine-04" data-width="1080" data-height="1440" data-start="0" data-duration="5">
+  <div class="scene">
+    <main class="content">
+      <div class="chrome"><span>IMAGE GRID</span><span>04 / 05</span></div>
+      <section class="title-row">
+        <h1 class="title">四格证据墙</h1>
+        <p class="summary">图片网格保持统一高度，不依赖网页式自适应，方便视频渲染和后期替换素材。</p>
+      </section>
+      <section class="grid">
+        <div class="tile"><span>01 · 场景证据</span></div>
+        <div class="tile dark"><span>02 · 关键截图</span></div>
+        <div class="tile dark"><span>03 · 结果对比</span></div>
+        <div class="tile"><span>04 · 补充细节</span></div>
+      </section>
+      <div class="footer">推荐用于多图对比、案例集合、截图证据，不建议放密集长表格。</div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+  (function() {
+    if (typeof gsap === "undefined") return;
+    var tl = gsap.timeline({ paused: true });
+    tl.fromTo(".chrome", { opacity: 0, y: -18 }, { opacity: 1, y: 0, duration: 0.42, ease: "power2.out" }, 0.18)
+      .fromTo(".title", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.4)
+      .fromTo(".summary", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.58)
+      .fromTo(".tile", { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 0.46, stagger: 0.08, ease: "power2.out" }, 0.82)
+      .fromTo(".footer", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.38, ease: "power2.out" }, 1.38);
+    window.__timelines = window.__timelines || {};
+    window.__timelines["guizang-magazine-04"] = tl;
+    window.addEventListener("hyperframes:play", function() { tl.play(); });
+    window.addEventListener("hyperframes:pause", function() { tl.pause(); });
+    window.addEventListener("hyperframes:reset", function() { tl.restart().pause(); });
+    setTimeout(function() { if (tl.paused()) tl.play(); }, 200);
+  })();
+  </script>
+</div>
+</body>
+</html>
