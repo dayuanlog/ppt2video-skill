@@ -187,7 +187,7 @@ tl.to(".image", { filter: "blur(0px) brightness(1.3)", duration: 1 });
 - 0 个 `mix-blend-mode`。
 - 0 个关键内容滤镜。
 
-如果超过预算，必须在 `scene-design-plan.md` 的“渲染安全”字段说明为什么需要。
+如果超过预算，必须在 `structure-proposal.md` 对应 scene 的“设计注意”字段说明为什么需要。不要为了这件事单独增加额外规划文件，除非用户明确要求兼容旧管线。
 
 ## 检查命令建议
 

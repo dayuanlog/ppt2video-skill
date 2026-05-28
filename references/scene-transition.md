@@ -4,7 +4,7 @@
 
 ## 当前工作流默认策略
 
-`ppt-to-video-skills` 现在输出的是独立 `scene-XX.html` 文件，用于视频渲染或后续编排。
+`ppt2video-skills` 现在输出的是独立 `scene-XX.html` 文件，用于视频渲染或后续编排。
 
 因此默认不强调“跨 scene 过渡设计”，而是强调：
 
